@@ -9,12 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Datos\" />
-    <Folder Include="UI\" />
-    <Folder Include="Utilidades\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

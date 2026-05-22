@@ -23,17 +23,27 @@ namespace PuntoVenta
         //FUNCIÓN PARA VALIDAR EL USUARIO Y CONTRASEÑA (BORRADOR SIN BD)
         private void btn_ingresar_Click(object sender, EventArgs e)
         {
-            if (txt_usuario.Text == "usuario" && txt_pass.Text == "admin")
+            if (
+                (txt_usuario.Text == "usuario" && txt_pass.Text == "admin")
+                ||
+                (txt_usuario.Text == "German" && txt_pass.Text == "219999")
+                ||
+                (txt_usuario.Text == "Steve" && txt_pass.Text == "1234")
+                ||
+                (txt_usuario.Text == "Enma" && txt_pass.Text == "abcd")
+            )
             {
-                PuntoVenta fpv = new PuntoVenta();
+                PuntoVenta fpv = new PuntoVenta(txt_usuario.Text);
                 fpv.Owner = this;
+                txt_pass.Clear();
+                txt_usuario.Clear();
+                txt_usuario.Focus();
                 this.Hide();
                 fpv.Show();
             }
             else
             {
                 MessageBox.Show("La contraseña o el ususario con incorrectos");
-                txt_usuario.Clear();
                 txt_pass.Clear();
             }
         }
@@ -49,13 +59,33 @@ namespace PuntoVenta
         //Salir al presionar el botón de SALIR
         private void btn_salir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult resultado = MessageBox.Show(
+                "¿Seguro que quieres salir?",
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+                );
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
         
         //Salir al presionar el cuadro de imágen
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult resultado = MessageBox.Show(
+                "¿Seguro que quieres salir?",
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+                );
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
 

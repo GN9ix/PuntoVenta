@@ -41,6 +41,7 @@
             pictureBox2 = new PictureBox();
             panel1 = new Panel();
             label4 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
@@ -195,12 +196,24 @@
             label4.Text = "¿No tiene un usuario? Cree uno aquí";
             label4.Click += label4_Click;
             // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.BackColor = SystemColors.ControlDark;
+            label5.Location = new Point(531, 9);
+            label5.Name = "label5";
+            label5.Size = new Size(30, 20);
+            label5.TabIndex = 12;
+            label5.Text = "Esc";
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(684, 416);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
@@ -239,5 +252,6 @@
         private PictureBox pictureBox2;
         private Panel panel1;
         private Label label4;
+        private Label label5;
     }
 }
