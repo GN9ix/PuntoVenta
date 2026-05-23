@@ -34,6 +34,7 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            btn_nuevo_producto = new Button();
             btn_caja = new Button();
             pictureBox1 = new PictureBox();
             btn_compras = new Button();
@@ -82,6 +83,7 @@
             // panel2
             // 
             panel2.BackColor = Color.Firebrick;
+            panel2.Controls.Add(btn_nuevo_producto);
             panel2.Controls.Add(btn_caja);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(btn_compras);
@@ -91,6 +93,19 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(800, 70);
             panel2.TabIndex = 1;
+            // 
+            // btn_nuevo_producto
+            // 
+            btn_nuevo_producto.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_nuevo_producto.BackColor = Color.GreenYellow;
+            btn_nuevo_producto.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btn_nuevo_producto.Location = new Point(475, 9);
+            btn_nuevo_producto.Name = "btn_nuevo_producto";
+            btn_nuevo_producto.Size = new Size(101, 49);
+            btn_nuevo_producto.TabIndex = 4;
+            btn_nuevo_producto.Text = "NUEVO\r\nPRODUCTO";
+            btn_nuevo_producto.UseVisualStyleBackColor = false;
+            btn_nuevo_producto.Click += btn_nuevo_producto_Click;
             // 
             // btn_caja
             // 
@@ -133,9 +148,10 @@
             txt_busqueda.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txt_busqueda.Location = new Point(67, 22);
             txt_busqueda.Name = "txt_busqueda";
-            txt_busqueda.Size = new Size(498, 27);
+            txt_busqueda.Size = new Size(402, 27);
             txt_busqueda.TabIndex = 0;
             txt_busqueda.Text = "Búsqueda por Nombre o Código de Barras";
+            txt_busqueda.TextChanged += txt_busqueda_TextChanged;
             // 
             // panel3
             // 
@@ -276,5 +292,6 @@
         private PictureBox pictureBox1;
         private Button btn_compras;
         private Button btn_caja;
+        private Button btn_nuevo_producto;
     }
 }

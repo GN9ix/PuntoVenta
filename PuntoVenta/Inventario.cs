@@ -1,4 +1,6 @@
-﻿using PuntoVenta.Modelos;
+﻿using LogicaNegocio;
+using PuntoVenta.Forms_Tercearios;
+using PuntoVenta.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +36,7 @@ namespace PuntoVenta
             }
         }
 
-        
+
         private void ConfigurarTabla()
         {
             //Encabezados centrados
@@ -92,28 +94,11 @@ namespace PuntoVenta
 
         private void CargarProductos()
         {
-            listaProductos.Add(new Producto
-            {
-                Id = 1,
-                Nombre = "Coca Cola",
-                CodigoBarras = "123",
-                PrecioCompra = 3,
-                PrecioVenta = 5,
-                Stock = 10,
-                Lote = "A01",
-                FechaExpiracion = new DateTime(2026, 1, 1)
-            });
-            listaProductos.Add(new Producto
-            {
-                Id = 2,
-                Nombre = "Tortrix",
-                CodigoBarras = "456",
-                PrecioCompra = 3.55,
-                PrecioVenta = 5,
-                Stock = 10,
-                Lote = "L123456",
-                FechaExpiracion = new DateTime(2026, 6, 12)
-            });
+            dgv_inventario.Rows.Clear();
+
+            ProductoLN ln = new ProductoLN();
+
+            listaProductos = ln.MostrarProductos();
 
             foreach (Producto p in listaProductos)
             {
@@ -121,14 +106,43 @@ namespace PuntoVenta
                     p.Id,
                     p.Nombre,
                     p.CodigoBarras,
-                    p.PrecioCompra,
-                    p.PrecioVenta,
+                    "Q. " + p.PrecioCompra.ToString("0.00"),
+                    "Q. " + p.PrecioVenta.ToString("0.00"),
                     p.Stock,
                     p.Lote,
                     p.FechaExpiracion.ToShortDateString()
                 );
             }
         }
+
+        private void BuscarProductos(string texto)
+        {
+            dgv_inventario.Rows.Clear();
+
+            var resultados = listaProductos
+                .Where(p =>
+                    p.Nombre.ToLower().Contains(texto.ToLower())
+                    ||
+                    p.CodigoBarras.Contains(texto)
+                )
+                .ToList();
+
+            foreach (Producto p in resultados)
+            {
+                dgv_inventario.Rows.Add(
+                    p.Id,
+                    p.Nombre,
+                    p.CodigoBarras,
+                    "Q. " + p.PrecioCompra.ToString("0.00"),
+                    "Q. " + p.PrecioVenta.ToString("0.00"),
+                    p.Stock,
+                    p.Lote,
+                    p.FechaExpiracion.ToShortDateString()
+                );
+            }
+        }
+
+        //EVENTOS
 
         private void dgv_inventario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -143,10 +157,10 @@ namespace PuntoVenta
                 dgv_inventario.Columns[e.ColumnIndex].Name == "Borrar")
             {
                 DialogResult resultado = MessageBox.Show(
-                "¿Seguro que quieres salir?",
+                "¿Seguro que quieres eliminar este producto?",
                 "Confirmar",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
+                MessageBoxIcon.Question
                 );
 
                 if (resultado == DialogResult.Yes)
@@ -171,6 +185,16 @@ namespace PuntoVenta
         private void btn_compras_Click(object sender, EventArgs e)
         {
             AbrirEnPrincipal(new Compras());
+        }
+
+        private void btn_nuevo_producto_Click(object sender, EventArgs e)
+        {
+            AbrirEnPrincipal(new form_crear_producto());
+        }
+
+        private void txt_busqueda_TextChanged(object sender, EventArgs e)
+        {
+            BuscarProductos(txt_busqueda.Text);
         }
     }
 }

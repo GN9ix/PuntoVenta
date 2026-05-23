@@ -20,7 +20,7 @@ namespace PuntoVenta.Modelos
             }
         }
 
-        public double Precio
+        public decimal Precio
         {
             get
             {
@@ -28,7 +28,7 @@ namespace PuntoVenta.Modelos
             }
         }
 
-        public double Subtotal
+        public decimal Subtotal
         {
             get
             {

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LogicaNegocio;
 
 namespace PuntoVenta
 {
@@ -20,30 +21,33 @@ namespace PuntoVenta
             this.AcceptButton = btn_ingresar;
         }
 
+        UsuarioLN usuarioLN = new UsuarioLN();
+
         //FUNCIÓN PARA VALIDAR EL USUARIO Y CONTRASEÑA (BORRADOR SIN BD)
         private void btn_ingresar_Click(object sender, EventArgs e)
         {
-            if (
-                (txt_usuario.Text == "usuario" && txt_pass.Text == "admin")
-                ||
-                (txt_usuario.Text == "German" && txt_pass.Text == "219999")
-                ||
-                (txt_usuario.Text == "Steve" && txt_pass.Text == "1234")
-                ||
-                (txt_usuario.Text == "Enma" && txt_pass.Text == "abcd")
-            )
+            if (usuarioLN.Login(
+        txt_usuario.Text,
+        txt_pass.Text))
             {
-                PuntoVenta fpv = new PuntoVenta(txt_usuario.Text);
+                PuntoVenta fpv =
+                    new PuntoVenta(txt_usuario.Text);
+
                 fpv.Owner = this;
+
                 txt_pass.Clear();
                 txt_usuario.Clear();
+
                 txt_usuario.Focus();
+
                 this.Hide();
                 fpv.Show();
             }
             else
             {
-                MessageBox.Show("La contraseña o el ususario con incorrectos");
+                MessageBox.Show(
+                    "La contraseña o el usuario son incorrectos");
+
                 txt_pass.Clear();
             }
         }
@@ -71,7 +75,7 @@ namespace PuntoVenta
                 Application.Exit();
             }
         }
-        
+
         //Salir al presionar el cuadro de imágen
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -88,12 +92,6 @@ namespace PuntoVenta
             }
         }
 
-
-        private void txt_usuario_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
         //Autenticar al presionar enter en el TextField de Contraseña
         private void txt_pass_KeyDown(object sender, KeyEventArgs e)
         {
@@ -101,15 +99,6 @@ namespace PuntoVenta
             {
                 btn_ingresar.PerformClick();
             }
-        }
-
-        //Redireccionar a otro Formulario para crear un usuario
-        private void label4_Click(object sender, EventArgs e)
-        {
-            Creación_usuario fpv = new Creación_usuario();
-            fpv.Owner = this;
-            this.Hide();
-            fpv.Show();
         }
 
         //Apenas corra el programa, el cursos se ubica en el TextField de Usuario
@@ -135,6 +124,11 @@ namespace PuntoVenta
                     Application.Exit();
                 }
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

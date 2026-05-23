@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace PuntoVenta
 {
@@ -34,6 +35,14 @@ namespace PuntoVenta
                 CodigoBarras = "456",
                 PrecioVenta = 3,
                 Stock = 20
+            });
+            listaProductos.Add(new Producto
+            {
+                Id = 3,
+                Nombre = "Fuegos Artificiales",
+                CodigoBarras = "7622202015212",
+                PrecioVenta = 100,
+                Stock = 10
             });
             dgv_productos.DataSource = listaProductos;
         }
@@ -112,6 +121,9 @@ namespace PuntoVenta
 
 
         //Función para Agregar un Producto al Carrito
+
+
+
         private void AgregarProducto(Producto producto)
         {
             DetalleVenta existente = ventaActual.Detalles
@@ -138,7 +150,8 @@ namespace PuntoVenta
         {
             return listaProductos.FirstOrDefault(p =>
                 p.CodigoBarras == texto ||
-                p.Nombre.ToLower() == texto.ToLower()
+                p.Nombre.Equals(texto,
+                StringComparison.OrdinalIgnoreCase)
             );
         }
 
@@ -169,6 +182,14 @@ namespace PuntoVenta
             ActualizarTotal();
         }
 
+        private void SeleccionarProducto()
+        {
+            Producto productoSeleccionado =
+                (Producto)dgv_productos.CurrentRow.DataBoundItem;
+
+            AgregarProducto(productoSeleccionado);
+        }
+
         //EVENTOS
 
         //Evento para apuntar el cursor en el TextField para el código de barras
@@ -197,10 +218,7 @@ namespace PuntoVenta
         //Evento para agregar los productos al carrito al hacer click en ellos
         private void dgv_productos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            Producto productoSeleccionado =
-                (Producto)dgv_productos.CurrentRow.DataBoundItem;
-
-            AgregarProducto(productoSeleccionado);
+            SeleccionarProducto();
             txt_barcod.Focus();
         }
 
@@ -213,7 +231,8 @@ namespace PuntoVenta
         //Evento para eliminar los datos al hacer click en la 'x' de la columna "Quitar"
         private void dgv_carrito_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex < 0)
+                return;
             if (dgv_carrito.Columns[e.ColumnIndex].Name == "Quitar")
             {
                 ventaActual.Detalles.RemoveAt(e.RowIndex);
@@ -241,23 +260,21 @@ namespace PuntoVenta
 
                     ActualizarTabla();
                     ActualizarTotal();
-
-                    if (e.KeyCode == Keys.Escape)
-                    {
-                        txt_barcod.Focus();
-                    }
                 }
             }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                txt_barcod.Focus();
+            }
+        
         }
 
         private void dgv_productos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Producto productoSeleccionado =
-                (Producto)dgv_productos.CurrentRow.DataBoundItem;
-
-                AgregarProducto(productoSeleccionado);
+                SeleccionarProducto();
             }
             if (e.KeyCode == Keys.Escape)
             {

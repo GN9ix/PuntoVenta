@@ -15,7 +15,7 @@ namespace PuntoVenta.Modelos
         public List<DetalleVenta> Detalles { get; set; }
             = new List<DetalleVenta>();
 
-        public double Total
+        public decimal Total
         {
             get
             {

@@ -108,11 +108,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Montserrat Black", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(430, 9);
+            label1.Location = new Point(445, 6);
             label1.Name = "label1";
-            label1.Size = new Size(307, 55);
+            label1.Size = new Size(220, 55);
             label1.TabIndex = 1;
-            label1.Text = "DASHBOARD";
+            label1.Text = "TA' KAPE";
             // 
             // gn9studios
             // 

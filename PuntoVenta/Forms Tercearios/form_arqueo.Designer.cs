@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_arqueo));
             panel1 = new Panel();
+            lbl_total_billetes = new Label();
             lbl_total_1 = new Label();
             lbl_total_5 = new Label();
             lbl_total_10 = new Label();
@@ -80,7 +81,6 @@
             label3 = new Label();
             box_back = new PictureBox();
             lbl_back = new Label();
-            lbl_total_billetes = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)box_back).BeginInit();
@@ -115,10 +115,22 @@
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(119, 185);
+            panel1.Location = new Point(80, 185);
             panel1.Name = "panel1";
             panel1.Size = new Size(425, 473);
             panel1.TabIndex = 0;
+            // 
+            // lbl_total_billetes
+            // 
+            lbl_total_billetes.Anchor = AnchorStyles.Top;
+            lbl_total_billetes.AutoSize = true;
+            lbl_total_billetes.Font = new Font("Segoe UI", 12F);
+            lbl_total_billetes.Location = new Point(188, 421);
+            lbl_total_billetes.Name = "lbl_total_billetes";
+            lbl_total_billetes.RightToLeft = RightToLeft.Yes;
+            lbl_total_billetes.Size = new Size(0, 28);
+            lbl_total_billetes.TabIndex = 24;
+            lbl_total_billetes.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lbl_total_1
             // 
@@ -402,7 +414,7 @@
             panel2.Controls.Add(label17);
             panel2.Controls.Add(label18);
             panel2.Controls.Add(label19);
-            panel2.Location = new Point(673, 185);
+            panel2.Location = new Point(801, 180);
             panel2.Name = "panel2";
             panel2.Size = new Size(425, 331);
             panel2.TabIndex = 1;
@@ -643,7 +655,7 @@
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Audiowide", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(119, 143);
+            label2.Location = new Point(80, 143);
             label2.Name = "label2";
             label2.Size = new Size(317, 39);
             label2.TabIndex = 0;
@@ -654,7 +666,7 @@
             label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Font = new Font("Audiowide", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(673, 143);
+            label3.Location = new Point(801, 138);
             label3.Name = "label3";
             label3.Size = new Size(340, 39);
             label3.TabIndex = 2;
@@ -681,23 +693,11 @@
             lbl_back.TabIndex = 5;
             lbl_back.Text = "Atrás";
             // 
-            // lbl_total_billetes
-            // 
-            lbl_total_billetes.Anchor = AnchorStyles.Top;
-            lbl_total_billetes.AutoSize = true;
-            lbl_total_billetes.Font = new Font("Segoe UI", 12F);
-            lbl_total_billetes.Location = new Point(188, 421);
-            lbl_total_billetes.Name = "lbl_total_billetes";
-            lbl_total_billetes.RightToLeft = RightToLeft.Yes;
-            lbl_total_billetes.Size = new Size(0, 28);
-            lbl_total_billetes.TabIndex = 24;
-            lbl_total_billetes.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // form_arqueo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1160, 700);
+            ClientSize = new Size(1313, 700);
             Controls.Add(lbl_back);
             Controls.Add(box_back);
             Controls.Add(label3);

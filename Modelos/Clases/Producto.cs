@@ -13,8 +13,8 @@ namespace PuntoVenta.Modelos
         public string CodigoBarras { get; set; } = "";
         public string Lote { get; set; } = "";
         public DateTime FechaExpiracion { get; set; } //Método que retorne nombre, precio, estado (hay stock o no)
-        public double PrecioCompra { get; set; }    //Método de Vender
-        public double PrecioVenta { get; set; }
+        public decimal PrecioCompra { get; set; }    //Método de Vender
+        public decimal PrecioVenta { get; set; }
         public int Stock { get; set; }
         public string Categoria { get; set; }
     }

@@ -54,7 +54,7 @@
             // img_caja
             // 
             img_caja.Anchor = AnchorStyles.Top;
-            img_caja.BorderStyle = BorderStyle.FixedSingle;
+            img_caja.BorderStyle = BorderStyle.Fixed3D;
             img_caja.Image = (Image)resources.GetObject("img_caja.Image");
             img_caja.Location = new Point(62, 12);
             img_caja.Name = "img_caja";
@@ -134,7 +134,7 @@
             // img_compra
             // 
             img_compra.Anchor = AnchorStyles.Top;
-            img_compra.BorderStyle = BorderStyle.FixedSingle;
+            img_compra.BorderStyle = BorderStyle.Fixed3D;
             img_compra.Image = (Image)resources.GetObject("img_compra.Image");
             img_compra.Location = new Point(65, 10);
             img_compra.Name = "img_compra";
@@ -171,6 +171,7 @@
             // img_inventario
             // 
             img_inventario.Anchor = AnchorStyles.Top;
+            img_inventario.BorderStyle = BorderStyle.Fixed3D;
             img_inventario.Image = (Image)resources.GetObject("img_inventario.Image");
             img_inventario.Location = new Point(66, 12);
             img_inventario.Name = "img_inventario";

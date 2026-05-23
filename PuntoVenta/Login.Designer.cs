@@ -40,7 +40,6 @@
             btn_salir = new Button();
             pictureBox2 = new PictureBox();
             panel1 = new Panel();
-            label4 = new Label();
             label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -104,7 +103,6 @@
             txt_usuario.Name = "txt_usuario";
             txt_usuario.Size = new Size(316, 30);
             txt_usuario.TabIndex = 4;
-            txt_usuario.KeyDown += txt_usuario_KeyDown;
             // 
             // txt_pass
             // 
@@ -183,19 +181,6 @@
             panel1.Size = new Size(110, 42);
             panel1.TabIndex = 10;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Cursor = Cursors.Hand;
-            label4.Font = new Font("Kanit ExtraBold", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.FromArgb(128, 128, 255);
-            label4.Location = new Point(342, 379);
-            label4.Name = "label4";
-            label4.Size = new Size(322, 28);
-            label4.TabIndex = 11;
-            label4.Text = "¿No tiene un usuario? Cree uno aquí";
-            label4.Click += label4_Click;
-            // 
             // label5
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -214,7 +199,6 @@
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(684, 416);
             Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Controls.Add(label3);
@@ -229,6 +213,7 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            Load += Login_Load;
             Shown += Login_Shown;
             KeyDown += Login_KeyDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -251,7 +236,6 @@
         private Button btn_salir;
         private PictureBox pictureBox2;
         private Panel panel1;
-        private Label label4;
         private Label label5;
     }
 }
